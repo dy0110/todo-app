@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>TODOリスト</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css"
+    />
+    <script
+      defer
+      src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <section class="navbar is-primary level">
+      <div class="level-left">
+        <div class="level-item">
+          <h1 class="title is-half" style="color: azure;">TODOリスト</h1>
+        </div>
+      </div>
+    </section>
+    <br /><br />
+    <div class="level">
+      <div class="level-item has-text-centerd">
+        <div class="panel">
+          <p class="panel-heading">タスク入力</p>
+          <div class="panel-block">
+            <section class="level">
+              <div class="field is-grouped level-item has-text-centered">
+                <div class="control">
+                  <label lass="label"
+                    ><i class="far fa-calendar-alt"></i> 締め切り時刻</label
+                  >
+                  <input
+                    type="datetime"
+                    class="input is-primary"
+                    name=""
+                    id="input_date"
+                    placeholder="締め切り時刻を入力"
+                  />
+                  <br /><br />
+                  <label class="label"
+                    ><i class="far fa-check-circle"></i> TODO</label
+                  >
+                  <input
+                    id="input_text"
+                    class="input is-primary"
+                    type="text"
+                    placeholder="タスクを入力"
+                  />
+                  <br /><br />
+                  <label class="label" for="">優先度</label>
+                  <div class="select is-primary">
+                    <select name="" id="input_priority">
+                      <option value="high">高い</option>
+                      <option value="usually">普通</option>
+                      <option value="low">低い</option>
+                    </select>
+                  </div>
+                  <br /><br />
+                  <div class="level-item level-right">
+                    <button class="button is-link" id="get_todo">追加</button>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="level">
+      <div class="level-item has-text-centerd">
+        <div class="panel">
+          <p class="panel-heading">TODO一覧</p>
+          <div class="panel-block">
+            <section class="level">
+              <div class="field is-grouped level-item has-text-centerd">
+                <div class="control">
+                  <table class="table is-bordered">
+                    <thead>
+                      <tr>
+                        <th>完了</th>
+                        <th>締め切り</th>
+                        <th>タスク</th>
+                        <th>優先度</th>
+                        <th>削除</th>
+                      </tr>
+                    </thead>
+                    <tbody id="todo_list"></tbody>
+                  </table>
+                  <br /><br />
+                  <div class="level-item level-right">
+                    <button
+                      class="button is-danger"
+                      onclick="showModal(this,'all')"
+                    >
+                      全件削除
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer class="footer" id="todo_footer">
+      <p>
+        このページのCSSフレームワークは<a href="https://bulma.io/">Bluma</a
+        >を利用しています。
+      </p>
+    </footer>
+    <!-- todo_delete modal -->
+    <div id="todo_delete_modal" class="modal">
+      <div class="modal-background close_modal"></div>
+      <div class="modal-card">
+        <header class="modal-card-head">
+          <p class="modal-card-title">TODOの削除</p>
+          <a class="close_modal"><i class="fas fa-times"></i></a>
+        </header>
+        <section class="modal-card-body">
+          このTODOを削除します。<br />
+          よろしいですか?
+        </section>
+        <footer class="modal-card-foot">
+          <button class="button is-success" id="delete_todo_list">はい</button>
+          <button class="button is-danger close_modal">いいえ</button>
+        </footer>
+      </div>
+    </div>
+    <!-- todo_delete modal -->
+    <!-- all_delete modal -->
+    <div id="all_todo_delete_modal" class="modal">
+      <div class="modal-background close_modal"></div>
+      <div class="modal-card">
+        <header class="modal-card-head">
+          <p class="modal-card-title">TODOの削除</p>
+          <a class="close_modal"><i class="fas fa-times"></i></a>
+        </header>
+        <section class="modal-card-body">
+          リストにある全てのTODOを削除します。<br />
+          よろしいですか?
+        </section>
+        <footer class="modal-card-foot">
+          <button class="button is-success" id="delete_all_todo">はい</button>
+          <button class="button is-danger close_modal">いいえ</button>
+        </footer>
+      </div>
+    </div>
+    <!-- all_delete modal -->
+    <!-- error_modal -->
+    <div id="error_modal" class="modal">
+      <div class="modal-background close_modal"></div>
+      <div class="modal-content">
+          <div class="notification is-primary">
+            <button class="delete close_modal"></button>
+            <p id="error_message_area"></p>  
+          </div>
+      </div>
+    </div>
+    <!-- error_modal -->
+    <script src="js/message.js"></script>
+    <script src="js/app.js"></script>
+  </body>
+</html>
