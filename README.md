@@ -12,8 +12,21 @@ Since the entered task is not retained, it disappears when reloading.
 ## Library list used
 
 - [bluma](https://bulma.io/)
+- [Bulma Modal FX](https://postare.github.io/bulma-modal-fx/)
 - [Font Awesome](https://fontawesome.com/)
 - [flatpickr](https://flatpickr.js.org/)
+
+## Tested browser
+
+### Mac
+
+- Safari
+- GoogleChorome
+  
+### windows
+
+- GoogleChorome
+
 
 ## to-do list
 

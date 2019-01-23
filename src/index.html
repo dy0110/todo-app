@@ -5,14 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>TODOリスト</title>
+    <!-- bluma -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css"
     />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/bulma-modal-fx/dist/css/modal-fx.min.css"
+    />
+    <script
+      type="text/javascript"
+      src="https://unpkg.com/bulma-modal-fx/dist/js/modal-fx.min.js"
+    ></script>
+    <!-- fontawesome -->
     <script
       defer
       src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"
     ></script>
+    <!-- flatpicker -->
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css"
@@ -120,7 +131,7 @@
       </p>
     </footer>
     <!-- todo_delete modal -->
-    <div id="todo_delete_modal" class="modal">
+    <div id="todo_delete_modal" class="modal modal-fx-fadeInScale">
       <div class="modal-background close_modal"></div>
       <div class="modal-card">
         <header class="modal-card-head">
@@ -139,7 +150,7 @@
     </div>
     <!-- todo_delete modal -->
     <!-- all_delete modal -->
-    <div id="all_todo_delete_modal" class="modal">
+    <div id="all_todo_delete_modal" class="modal modal-fx-fadeInScale">
       <div class="modal-background close_modal"></div>
       <div class="modal-card">
         <header class="modal-card-head">
@@ -158,13 +169,13 @@
     </div>
     <!-- all_delete modal -->
     <!-- error_modal -->
-    <div id="error_modal" class="modal">
+    <div id="error_modal" class="modal modal-fx-slideBottom">
       <div class="modal-background close_modal"></div>
       <div class="modal-content">
-          <div class="notification is-primary">
-            <button class="delete close_modal"></button>
-            <p id="error_message_area"></p>  
-          </div>
+        <div class="notification is-primary">
+          <button class="delete close_modal"></button>
+          <p id="error_message_area"></p>
+        </div>
       </div>
     </div>
     <!-- error_modal -->

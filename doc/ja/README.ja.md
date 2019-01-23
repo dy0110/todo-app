@@ -12,8 +12,20 @@
 ## 利用したライブラリ
 
 - [bluma](https://bulma.io/)
+- [Bulma Modal FX](https://postare.github.io/bulma-modal-fx/)
 - [Font Awesome](https://fontawesome.com/)
 - [flatpickr](https://flatpickr.js.org/)
+
+## テスト済みブラウザ
+
+### Mac
+
+- Safari
+- GoogleChorome
+  
+### windows
+
+- GoogleChorome
 
 ## やりたいことリスト
 

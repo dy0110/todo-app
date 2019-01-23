@@ -99,30 +99,33 @@ function clickCompleteButton(complete_todo) {
    * @param {*object}
    */
   const td = complete_todo.parentNode;
-
   /**
    * trタグ
    * @param {*object}
    */
   const tr = td.parentNode;
-  // 行のカラーをグレーに
-  tr.style.backgroundColor = "lightgray";
-
   /**
    * タスク要素に打消し戦を追加
    * @param {*object}
    */
   const item_task = tr.getElementsByClassName("item_task");
-  item_task[0].style.textDecoration = "line-through";
-
   /**
    * 削除ボタンオブジェクト
    * @param {*object}
    */
   const delete_button = tr.getElementsByClassName("delete_todo");
+
+  // 行のカラーをグレーに
+  tr.style.backgroundColor = "lightgray";
+  item_task[0].style.textDecoration = "line-through";
+
   // ボタンの見た目を変更する
   complete_todo.classList.add("is-inverted");
   delete_button[0].classList.add("is-inverted");
+
+  // ボタンのアイコンを変える
+  complete_todo.innerHTML = "";
+  complete_todo.innerHTML = '<i class="fas fa-clipboard-check"></i>';
 
   // クリックイベントの更新
   complete_todo.setAttribute("onclick", "clickIncompleteButton(this)");
@@ -144,24 +147,30 @@ function clickIncompleteButton(incomplete_todo) {
    * @param {*object}
    */
   const tr = td.parentNode;
-  //行のカラーを戻す
-  tr.style.backgroundColor = "";
-
   /**
    * タスク要素から打消し戦をとる
    * @param {*object}
    */
   const item_task = tr.getElementsByClassName("item_task");
-  item_task[0].style.textDecoration = "";
-
   /**
    * 削除ボタンオブジェクト
    * @param {*object}
    */
   const delete_button = tr.getElementsByClassName("delete_todo ");
+
+  //行のカラーを戻す
+  tr.style.backgroundColor = "";
+  //打ち消し線の削除
+  item_task[0].style.textDecoration = "";
+
   // ボタンの見た目を変更する
   incomplete_todo.classList.remove("is-inverted");
   delete_button[0].classList.remove("is-inverted");
+
+  // ボタンのアイコンを変える
+  incomplete_todo.innerHTML = "";
+  incomplete_todo.innerHTML = '<i class="fas fa-clipboard"></i>';
+
   // クリックイベントの更新
   incomplete_todo.setAttribute("onclick", "clickCompleteButton(this)");
 }
@@ -171,18 +180,23 @@ function clickIncompleteButton(incomplete_todo) {
  *
  */
 function deleteTodo() {
+  /**
+   * 削除htmlオブジェクト
+   * @param {*object}
+   */
   const delete_todo = delete_obj;
   /**
    * 親要素
    * @param {*object}
    */
   const td = delete_todo.parentNode;
-
   /**
    * trタグ
    * @param {*object}
    */
   const tr = td.parentNode;
+
+  // 列の削除
   tr.remove();
   // モーダルを閉じる
   closeModal();
@@ -236,7 +250,7 @@ function addTodo(todo_text, todo_time, todo_priority) {
    */
   let font_complete = document.createElement("i");
   font_complete.classList.add("fas");
-  font_complete.classList.add("fa-check");
+  font_complete.classList.add("fa-clipboard");
   // ボタン部分を追加
   complete_button.appendChild(font_complete);
   todo_complete.appendChild(complete_button);
