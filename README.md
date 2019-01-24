@@ -4,10 +4,10 @@
 
 A simple TODO list made with Pure JS.  
 You can enter and register tasks, deadlines and priorities.  
-Since the entered task is not retained, it disappears when reloading.
+The entered task is saved in IndexedDB, but it disappears when reloading.
 
 ***DEMO:***
-![デモ画像](/doc/img/yrtgt-lu4xx.gif)
+![デモ画像](doc/img/siucp-11jzs.gif)
 
 ## Library list used
 
@@ -15,6 +15,7 @@ Since the entered task is not retained, it disappears when reloading.
 - [Bulma Modal FX](https://postare.github.io/bulma-modal-fx/)
 - [Font Awesome](https://fontawesome.com/)
 - [flatpickr](https://flatpickr.js.org/)
+- [Dexie.js](https://dexie.org/)
 
 ## Tested browser
 
@@ -26,11 +27,13 @@ Since the entered task is not retained, it disappears when reloading.
 ### windows
 
 - GoogleChorome
+- Edge
+- FireFox
 
+*IE 11* is not supported.
 
 ## to-do list
 
-- Save tasks per user
 - Try Firebase
 - Try rewriting with the framework of jQuery and Bootstrap 4, or Vue.js party
 

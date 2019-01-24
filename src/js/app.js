@@ -3,7 +3,7 @@
  * アイテム数カウンター
  *@type {*number}
  */
-let item_counter = 0;
+let item_counter = 1;
 /**
  * 削除オブジェクト
  * @type {*object}
@@ -43,7 +43,8 @@ document.getElementById("get_todo").addEventListener("click", () => {
   }
 
   // リスト作成メソッド
-  addTodo(input_text, input_date, input_priority);
+  //addTodo(input_text, input_date, input_priority);
+  existenceTask(item_counter, input_text, input_date, input_priority);
   // 初期化
   document.getElementById("input_text").value = "";
   document.getElementById("input_date").value = "";
@@ -77,15 +78,19 @@ for (let i = 0; i < targets.length; i++) {
 // ===========================================================================
 
 /**
- *onLoad
- *カレンダーライブラリの利用を宣言
+ * onLoad
+ * カレンダーライブラリの利用を宣言
+ * IndexedDbを呼び出す
  */
 function onLoad() {
+  // カレンダー呼び出し
   const todo_time = document.getElementById("input_date");
   let fp = flatpickr(todo_time, {
     enableTime: true,
     dateFormat: "Y/m/d H:i"
   });
+  // データベース読み出し
+  createDataBase();
 }
 
 /**
@@ -129,6 +134,9 @@ function clickCompleteButton(complete_todo) {
 
   // クリックイベントの更新
   complete_todo.setAttribute("onclick", "clickIncompleteButton(this)");
+
+  // indexedDBのアップデート
+  updateComplete(parseInt(tr.getAttribute("item_no")), 1);
 }
 
 /**
@@ -173,6 +181,9 @@ function clickIncompleteButton(incomplete_todo) {
 
   // クリックイベントの更新
   incomplete_todo.setAttribute("onclick", "clickCompleteButton(this)");
+
+  // indexedDBのアップデート
+  updateComplete(parseInt(tr.getAttribute("item_no")), 0);
 }
 
 /**
@@ -200,6 +211,8 @@ function deleteTodo() {
   tr.remove();
   // モーダルを閉じる
   closeModal();
+  // DBから削除
+  deleteTask(parseInt(tr.getAttribute("item_no")));
 }
 
 /**
@@ -317,6 +330,8 @@ function addTodo(todo_text, todo_time, todo_priority) {
   document.getElementById("todo_list").appendChild(item);
   // item_counterを増やす
   item_counter = item_counter + 1;
+  // モーダルを閉じる
+  closeModal();
 }
 
 /**
@@ -329,6 +344,8 @@ function deleteAllTodo() {
   todo_list.remove();
   // モーダルを閉じる
   closeModal();
+  // indexedDBの削除
+  deleteAllTask();
 }
 
 /**
@@ -371,6 +388,15 @@ function showModal(obj, type) {
 function closeModal() {
   // 開いたモーダルの取得
   const modal = document.querySelector("div.modal.is-active");
+  if (modal !== null) {
+    // モーダルを隠す
+    modal.classList.remove("is-active");
+  }
+}
+
+function showLoadModal() {
+  // モーダルの取得
+  const loading = document.getElementById("loading_modal");
   // モーダルを隠す
-  modal.classList.remove("is-active");
+  loading.classList.add("is-active");
 }

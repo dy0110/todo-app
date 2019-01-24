@@ -4,17 +4,18 @@
 
 バニラJSで記述したシンプルなTODOアプリ。  
 タスク、締め切り、優先度を入力し登録することができます。  
-入力したタスクは永続化していないのでリロードすると消えます。
+入力したタスクはIndexedDBに保存していますが、リロードすると消えます。
 
 ***DEMO:***
-![デモ画像](/doc/img/yrtgt-lu4xx.gif)
+![デモ画像](doc/../../img/siucp-11jzs.gif)
 
 ## 利用したライブラリ
 
 - [bluma](https://bulma.io/)
 - [Bulma Modal FX](https://postare.github.io/bulma-modal-fx/)
 - [Font Awesome](https://fontawesome.com/)
-- [flatpickr](https://flatpickr.js.org/)
+- [flatpickr](https://flatpickr.js.org/) 
+- [Dexie.js](https://dexie.org/)
 
 ## テスト済みブラウザ
 
@@ -26,10 +27,13 @@
 ### windows
 
 - GoogleChorome
+- Edge
+- FireFox
+
+*IE11*はサポートしません
 
 ## やりたいことリスト
 
-- ユーザーごとにタスクを保存する
 - Firebase使ってみる
 - jQueryとBootstrap 4、またはVue.jsで書き直してみる
 

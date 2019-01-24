@@ -29,6 +29,10 @@
       href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css"
     />
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <!-- Dexie.js -->
+    <script src="https://unpkg.com/dexie@latest/dist/dexie.js"></script>
+    <!-- リソース -->
+    <script src="js/dbutils.js"></script>
     <link rel="stylesheet" href="css/style.css" />
   </head>
   <body>
@@ -179,6 +183,18 @@
       </div>
     </div>
     <!-- error_modal -->
+    <!-- loading_modal -->
+    <div class="modal modal-fx-fadeInScale" id="loading_modal">
+      <div class="modal-background"></div>
+      <div class="modal-content">
+          <div class="notification is-success">
+              <button class="column is-half is-offset-one-quarter button is-success is-medium">
+               <i class="fas fa-spinner fa-pulse fa-2x"></i>
+              </button>
+          </div>
+      </div>
+    </div>
+    <!-- loading_modal -->
     <script src="js/message.js"></script>
     <script src="js/app.js"></script>
   </body>
